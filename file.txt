@@ -1,0 +1,40 @@
+AUTH
+- Register user
+- Login user
+- Logout user
+- Refresh JWT token
+
+USER PROFILE
+- Get public profile
+- Update profile
+- Upload avatar
+- Update bio
+
+POSTS
+- Create post
+- Get all posts
+- Get single post
+- Update post
+- Delete post
+- Generate slug
+- Count post views
+- Pagination for posts
+
+COMMENTS
+- Add comment
+- Reply to comment
+- Edit comment
+- Delete comment
+- Get threaded comments
+
+REACTIONS
+- Like/dislike toggle on post
+- Remove reaction
+- Like/Dislike comment
+- Get reaction counts
+
+FOLLOW SYSTEM
+- Follow user
+- Unfollow user
+- Get followers list
+- Get following list
