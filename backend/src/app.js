@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser")
 
 const authRoutes = require("./routes/auth.route")
 const postRoutes = require("./routes/post.route")
+const followsRoutes = require("./routes/follows.route")
 
 const  app = express();
 
@@ -21,6 +22,9 @@ app.use("/api/auth", authRoutes)
 
 //post routes
 app.use("/api/posts", postRoutes)
+
+//follows routes
+app.use("/api/follows", followsRoutes)
 
 app.get("/",(req,res)=>{
     res.send("To kaise ho app log")
