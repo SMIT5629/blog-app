@@ -53,7 +53,10 @@ const getFollowers = async (req, res) => {
         const followers = await followsModel.find({
             followee: userId
         }).populate("follower", "username");
-        res.status(200).json(followers);
+        res.status(200).json({
+            followers,
+            followersCount: followers.length
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -66,7 +69,10 @@ const getFollowing = async (req, res) => {
         const following = await followsModel.find({
             follower: userId
         }).populate("followee", "username");
-        res.status(200).json(following);
+        res.status(200).json({
+            following,
+            followingCount: following.length
+        });
     } catch (error) {
         res.status(500).json({ message: "Error fetching following." });
     }
