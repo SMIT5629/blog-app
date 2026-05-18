@@ -43,7 +43,23 @@ const getLikes = async (req, res) => {
     }
 }
 
-module.exports = {
-    likePost, unlikePost, getLikes
-
+const makeComment = async (req, res) => {
+    const postId = req.params.id;
+    const userId = req.user._id;
+    const { comment } = req.body;
+    try {
+        const newComment = await commentModel.create({
+            post: postId,
+            user: userId,
+            comment: comment
+        });
+        res.status(201).json({ message: "Comment added successfully.", comment: newComment });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 }
+
+module.exports = {
+    likePost, unlikePost, getLikes, makeComment
+}
+

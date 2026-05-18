@@ -7,6 +7,8 @@ router.post("/:id", AuthMiddleware.authUser, ReactionController.likePost)
 router.delete("/:id", AuthMiddleware.authUser, ReactionController.unlikePost)
 router.get("/:id", ReactionController.getLikes)
 
+router.post("/:id/comment", AuthMiddleware.authUser, ReactionController.makeComment)
+
 
 
 module.exports = router;
