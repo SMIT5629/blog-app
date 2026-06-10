@@ -43,6 +43,8 @@ const getLikes = async (req, res) => {
     }
 }
 
+//comments
+
 const makeComment = async (req, res) => {
     const postId = req.params.id;
     const userId = req.user._id;
@@ -59,7 +61,53 @@ const makeComment = async (req, res) => {
     }
 }
 
-module.exports = {
-    likePost, unlikePost, getLikes, makeComment
+const getComments = async (req, res) => {
+    const postId = req.params.id;
+    try {
+        const comments = await commentModel.find({ post: postId }).populate("user", "username");
+        res.status(200).json({ comments });
+    }
+    catch (error) {
+        res.status(500).json({ message: "Error retrieving comments.", error })
+    }
 }
+
+const deleteComment = async (req, res) => {
+    const commentId = req.params.commentId;
+    const userId = req.user._id;
+    try {
+        const comment = await commentModel.findOneAndDelete({ _id: commentId, user: userId });
+        if (!comment) {
+            return res.status(404).json({ message: "Comment not found or unauthorized." });
+        }
+        res.status(200).json({ message: "Comment deleted successfully." });
+    } catch (error) {
+        res.status(500).json({ message: "Error deleting comment.", error })
+    }
+}
+
+const editComment = async (req, res) => {
+    const commentId = req.params.commentId;
+    const userId = req.user._id;
+    const { comment } = req.body;
+    try {
+        const updatedComment = await commentModel.findOneAndUpdate(
+            { _id: commentId, user: userId },
+            { comment: comment },
+            { new: true }
+        );
+
+        if (!updatedComment) {
+            return res.status(404).json({ message: "Comment not found or unauthorized." });
+        }
+
+        res.status(200).json({ message: "Comment updated successfully.", comment: updatedComment });
+    } catch (error) {
+        res.status(500).json({ message: "Error updating comment.", error })
+    }
+}
+
+    module.exports = {
+        likePost, unlikePost, getLikes, makeComment, getComments, deleteComment, editComment
+    }
 

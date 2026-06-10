@@ -1,0 +1,122 @@
+/* ── Auth Page Wrapper ── */
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f0f0f;
+}
+
+/* ── Auth Card ── */
+.auth-card {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ── Title ── */
+.auth-card h1 {
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    text-align: center;
+}
+
+.auth-subtitle {
+    color: #888;
+    font-size: 0.875rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* ── Form Fields ── */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 1.1rem;
+}
+
+.form-group label {
+    color: #aaa;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    background-color: #242424;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    padding: 10px 14px;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.form-group input::placeholder {
+    color: #555;
+}
+
+.form-group input:focus {
+    border-color: #1D9E75;
+}
+
+/* ── Error Message ── */
+.auth-error {
+    background-color: #2a1515;
+    border: 1px solid #5a2020;
+    border-radius: 8px;
+    color: #f87171;
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
+    padding: 10px 14px;
+    text-align: center;
+}
+
+/* ── Submit Button ── */
+.auth-btn {
+    background-color: #1D9E75;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    padding: 11px;
+    transition: background-color 0.2s, opacity 0.2s;
+    width: 100%;
+}
+
+.auth-btn:hover {
+    background-color: #179268;
+}
+
+.auth-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* ── Bottom Link ── */
+.auth-footer {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.auth-footer a {
+    color: #1D9E75;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
