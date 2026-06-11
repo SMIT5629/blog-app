@@ -1,0 +1,192 @@
+.navbar {
+    background-color: #141414;
+    border-bottom: 0.5px solid #2a2a2a;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-logo {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.3px;
+}
+
+.navbar-logo i {
+    color: #1D9E75;
+    font-size: 20px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-btn-ghost {
+    background: none;
+    border: 0.5px solid #333;
+    border-radius: 8px;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 6px 16px;
+    text-decoration: none;
+    font-family: inherit;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.navbar-btn-ghost:hover {
+    border-color: #555;
+    color: #fff;
+}
+
+.navbar-btn-solid {
+    background-color: #1D9E75;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 16px;
+    text-decoration: none;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.navbar-btn-solid:hover {
+    background-color: #179268;
+}
+
+/* ── Footer ── */
+.footer {
+    background-color: #141414;
+    border-top: 0.5px solid #2a2a2a;
+    margin-top: 4rem;
+}
+
+.footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+}
+
+/* ── Brand ── */
+.footer-logo {
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.3px;
+}
+
+.footer-logo svg {
+    color: #1D9E75;
+}
+
+.footer-tagline {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ── Nav Links ── */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links-title {
+    color: #888;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+}
+
+.footer-link {
+    color: #666;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s;
+    width: fit-content;
+}
+
+.footer-link:hover {
+    color: #1D9E75;
+}
+
+/* ── Socials ── */
+.footer-social-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-social-btn {
+    background-color: #242424;
+    border: 0.5px solid #333;
+    border-radius: 8px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.footer-social-btn:hover {
+    border-color: #1D9E75;
+    color: #1D9E75;
+}
+
+/* ── Bottom Bar ── */
+.footer-bottom {
+    border-top: 0.5px solid #222;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #444;
+    font-size: 12px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
