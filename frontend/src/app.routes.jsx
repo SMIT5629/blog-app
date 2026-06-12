@@ -9,7 +9,13 @@ import CreatePost from "./features/posts/pages/CreatePost";
 import Login from "./features/auth/pages/Login";
 import Register from "./features/auth/pages/Register";
 
+import Profile from "./features/profile/pages/Profile";
+import Followers from "./features/profile/pages/Followers";
+import Following from "./features/profile/pages/Following";
+import EditProfile from "./features/profile/pages/EditProfile";
+
 import Layout from "./shared/components/Layout.jsx";
+
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +25,10 @@ export const router = createBrowserRouter([
             { path: "/posts/:id", element: <PostDetail /> },
             { path: "/login", element: <Login /> },
             { path: "/register", element: <Register /> },
+            { path: "/profile/:id", element: <Profile /> },
+            { path: "/profile/:id/followers", element: <Followers /> },
+            { path: "/profile/:id/following", element: <Following /> },
+            { path: "/profile/me/edit", element: <EditProfile /> },
             {
                 element: <ProtectedRoute />,
                 children: [

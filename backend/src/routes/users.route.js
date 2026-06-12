@@ -4,10 +4,8 @@ const AuthController = require("../controllers/auth.controller");
 const AuthMiddleware = require("../middlewares/auth.middleware")
 const MulterMiddleware = require("../middlewares/multer.middleware")
 
-router.post("/sign-up", AuthController.signUp);
-router.post("/sign-in", AuthController.signIn);
-router.post("/sign-out", AuthController.signOut);
-router.get("/me", AuthMiddleware.authUser, AuthController.getMe);
+
+router.patch("/me", AuthMiddleware.authUser, MulterMiddleware.upload.single("avatar_image"), AuthController.updateProfile);
 router.get("/:id", AuthController.getUserProfile);
 
 module.exports = router;

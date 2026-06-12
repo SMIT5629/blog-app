@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../auth/auth.context.jsx";
 import { useDeletePost } from "../hooks/usePosts.js";
-import { FaTrash } from "react-icons/fa"   
+import { FaTrash } from "react-icons/fa"
 
 
 const PostCard = ({ post, onDelete }) => {
@@ -35,7 +35,9 @@ const PostCard = ({ post, onDelete }) => {
 
             <div className="post-card-body">
                 {/* author */}
-                <span className="post-card-username">@{post.author?.username}</span>
+                <Link to={`/profile/${post.author?._id}`} className="post-card-username">
+                    @{post.author?.username}
+                </Link>
 
                 {/* title — click goes to post detail */}
                 <Link to={`/posts/${post._id}`} className="post-card-title">
@@ -55,7 +57,7 @@ const PostCard = ({ post, onDelete }) => {
                             onClick={handleDelete}
                             disabled={loading}
                         >
-                            {loading ? "Deleting..." :  <FaTrash />}
+                            {loading ? "Deleting..." : <FaTrash />}
                         </button>
                     )}
                 </div>

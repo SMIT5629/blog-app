@@ -21,6 +21,14 @@
     gap: 8px;
     letter-spacing: -0.3px;
 }
+.navbar-avatar-img{
+ width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
 
 .navbar-logo i {
     color: #1D9E75;

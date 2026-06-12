@@ -1,8 +1,11 @@
 const userModel = require("../models/user.model");
+const followModel = require("../models/follows.model");
+const postModel = require("../models/post.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const tokenBlackListModel = require("../models/blacklist.model");
 const emailService = require("../services/email.service");
+const uploadFile = require("../services/storage.service");
 
 const signUp = async (req, res) => {
     try {
@@ -114,9 +117,104 @@ const getMe = async (req, res) => {
     }
 }
 
+const updateProfile = async (req, res) => {
+    try {
+        const { name, username, email, bio } = req.body;
+        const updateData = {};
+
+        if (name !== undefined) updateData.name = name;
+        if (username !== undefined) updateData.username = username;
+        if (email !== undefined) updateData.email = email;
+        if (bio !== undefined) updateData.bio = bio;
+
+        if (req.file) {
+            const uploadedAvatar = await uploadFile(req.file.buffer);
+
+            updateData.avatar_image = uploadedAvatar.url;
+        }
+
+        if (Object.keys(updateData).length === 0) {
+            return res.status(400).json({
+                message: "No valid fields provided for update",
+            });
+        }
+
+        const conflictQuery = {
+            _id: { $ne: req.user.id },
+            $or: [],
+        };
+
+        if (email) conflictQuery.$or.push({ email });
+        if (username) conflictQuery.$or.push({ username });
+
+        if (conflictQuery.$or.length > 0) {
+            const existingUser = await userModel.findOne(conflictQuery);
+
+            if (existingUser) {
+                return res.status(409).json({
+                    message: "Email or username already in use",
+                });
+            }
+        }
+
+        const updatedUser = await userModel.findByIdAndUpdate(
+            req.user.id,
+            { $set: updateData },
+            {
+                returnDocument: "after",
+                runValidators: true,
+            }
+        ).select("-password");
+
+        if (!updatedUser) {
+            return res.status(404).json({
+                message: "User not found",
+            });
+        }
+
+        return res.status(200).json({
+            message: "Profile updated successfully",
+            user: updatedUser,
+        });
+
+    } catch (error) {
+        console.error(error);
+
+        return res.status(500).json({
+            message: error.message,
+        });
+    }
+};
+
+const getUserProfile = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await userModel.findById(userId).select("-password");
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const followersCount = await followModel.countDocuments({ followee: userId });
+        const followingCount = await followModel.countDocuments({ follower: userId });
+        const postsCount = await postModel.countDocuments({ author: userId });
+        const posts = await postModel.find({ author: userId }).sort({ createdAt: -1 }).populate("author", "username avatar_image");
+        res.status(200).json({
+            user,
+            followersCount,
+            followingCount,
+            posts,
+            postsCount
+        });
+    }
+    catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+}
+
 module.exports = {
     signUp,
     signIn,
     signOut,
-    getMe
+    getMe,
+    updateProfile,
+    getUserProfile
 };

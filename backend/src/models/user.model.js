@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
             select:false
         },
 
-        avatar_url: {
+        avatar_image: {
             type: String,
             default: "https://unsplash.com/photos/a-cartoon-character-wearing-a-blue-shirt-and-a-blue-hat-gEf9bOMTZtk",
         },

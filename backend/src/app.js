@@ -9,6 +9,7 @@ const authRoutes = require("./routes/auth.route")
 const postRoutes = require("./routes/post.route")
 const followsRoutes = require("./routes/follows.route")
 const reactionRoutes = require("./routes/reactions.route")
+const userRoutes = require("./routes/users.route")
 
 const  app = express();
 
@@ -34,6 +35,9 @@ app.use("/api/follows", followsRoutes)
 
 //reactions routes
 app.use("/api/reactions", reactionRoutes)
+
+//users routes
+app.use("/api/users", userRoutes)
 
 app.get("/",(req,res)=>{
     res.send("To kaise ho app log")

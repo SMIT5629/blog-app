@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../features/auth/auth.context.jsx";
 import useAuth from "../../features/auth/hooks/useAuth.js";
-import { FiHome, FiEdit } from "react-icons/fi"   
+import { FiHome, FiEdit } from "react-icons/fi"
 
 const Navbar = () => {
     const { user } = useAuthContext();
@@ -15,20 +15,24 @@ const Navbar = () => {
             </Link>
 
             <div className="navbar-right">
+                <Link to="/" className="navbar-btn-ghost">
+                    <FiHome size={20} />
+                </Link>
                 {user ? (
                     <>
-                        <Link to="/" className="navbar-btn-ghost">
-                            <FiHome size={20} />
-                        </Link>
+
                         <Link to="/create-post" className="navbar-btn-ghost">
                             <FiEdit size={20} />
                         </Link>
-                        <Link to={`/profile/${user._id}`} className="navbar-btn-ghost">
-                            @{user.username}
-                        </Link>
+                
+
                         <button className="navbar-btn-ghost" onClick={handleSignOut}>
                             Sign out
                         </button>
+                        <Link to={`/profile/${user._id}`} >
+                            <img src={user.avatar_image} className="navbar-avatar-img" alt={user.username} />
+                        </Link>
+                       
                     </>
                 ) : (
                     <>
