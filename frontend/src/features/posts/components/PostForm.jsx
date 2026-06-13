@@ -4,6 +4,7 @@ import { useState } from "react";
 const PostForm = ({ onSubmit, loading, error, initialData = {} }) => {
     const [title, setTitle] = useState(initialData.title || "");
     const [content, setContent] = useState(initialData.content || "");
+    const [type, setType] = useState(initialData.type || "OTHER");
     const [coverImage, setCoverImage] = useState(null);
 
     const handleSubmit = (e) => {
@@ -13,6 +14,7 @@ const PostForm = ({ onSubmit, loading, error, initialData = {} }) => {
         const formData = new FormData();
         formData.append("title", title);
         formData.append("content", content);
+        formData.append("type", type);
         if (coverImage) {
             formData.append("cover_image", coverImage);
         }
@@ -56,6 +58,20 @@ const PostForm = ({ onSubmit, loading, error, initialData = {} }) => {
                     accept="image/*"
                     onChange={(e) => setCoverImage(e.target.files[0])}
                 />
+            </div>
+            <div className="post-form-group">
+                <label>Type</label>
+                <select
+                    className="post-form-select"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                >
+                    <option value="TECH">Tech</option>
+                    <option value="LIFESTYLE">Lifestyle</option>
+                    <option value="TRAVEL">Travel</option>
+                    <option value="FOOD">Food</option>
+                    <option value="OTHER">Other</option>
+                </select>
             </div>
 
             <button className="post-form-btn" type="submit" disabled={loading}>

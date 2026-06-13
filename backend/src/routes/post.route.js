@@ -10,9 +10,13 @@ router.get("/", PostController.getAllPosts);
 
 router.get("/:id", PostController.getPostById);
 
-router.put("/:id", AuthMiddleware.authUser, upload.single("cover_image"), PostController.updatePost);
+router.patch("/:id", AuthMiddleware.authUser, upload.single("cover_image"), PostController.updatePost);
 
 router.delete("/:id", AuthMiddleware.authUser, PostController.deletePost);
+
+router.patch("/:id/views", PostController.incrementViews);
+
+
 
 
 module.exports = router;

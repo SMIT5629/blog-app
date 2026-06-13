@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { getAllPosts, getPostById, createPost, updatePost, deletePost } from "../services/posts.api";
+import { useState, useEffect, useCallback } from "react";
+import { getAllPosts, getPostById, createPost, updatePost, deletePost, incrementViews } from "../services/posts.api";
 
 // hook for getting all posts (used in Home page)
 export const useGetAllPosts = () => {
@@ -59,7 +59,7 @@ export const useCreatePost = () => {
             const data = await createPost(formData);
             return data;
         } catch (err) {
-            setError(err.response?.data?.message || "Failed to create post");
+            setError(err.response?.data?.message || err.response?.data?.error || "Failed to create post");
         } finally {
             setLoading(false);
         }
@@ -108,4 +108,29 @@ export const useUpdatePost = () => {
     };
 
     return { handleUpdatePost, loading, error };
+};
+
+// hook for incrementing views of a post (used in PostDetail page)
+export const useIncrementViews = () => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const handleIncrementViews = useCallback(async (id) => {
+        if (!id) return null;
+
+        setLoading(true);
+        setError(null);
+
+        try {
+            const data = await incrementViews(id);
+            return data;
+        } catch (err) {
+            setError(err.response?.data?.message || "Failed to increment views");
+            return null;
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    return { handleIncrementViews, loading, error };
 };

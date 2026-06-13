@@ -22,9 +22,9 @@ export const createPost = async (formData) => {
     return response.data;
 };
 
-// PUT /api/posts/:id (with image)
+// PATCH /api/posts/:id (with image)
 export const updatePost = async (id, formData) => {
-    const response = await axiosInstance.put(`/api/posts/${id}`, formData, {
+    const response = await axiosInstance.patch(`/api/posts/${id}`, formData, {
         headers: {
             "Content-Type": "multipart/form-data",
         },
@@ -37,3 +37,9 @@ export const deletePost = async (id) => {
     const response = await axiosInstance.delete(`/api/posts/${id}`);
     return response.data;
 };
+
+// PATCH /api/posts/:id/views
+export const incrementViews = async (id) => {
+    const response = await axiosInstance.patch(`/api/posts/${id}/views`);
+    return response.data;
+}

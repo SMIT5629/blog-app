@@ -1,4 +1,4 @@
-/* ── Global reset for pages ── */
+/* ── Global reset ── */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -81,7 +81,7 @@ body {
     color: #fff;
 }
 
-/* ── Feed Section ── */
+/* ── Feed ── */
 .home-feed {
     max-width: 900px;
     margin: 0 auto;
@@ -94,7 +94,6 @@ body {
     margin-bottom: 1.25rem;
 }
 
-/* ── Post Feed ── */
 .post-feed {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -175,6 +174,7 @@ body {
     transition: color 0.2s;
 }
 
+
 .post-card-title:hover {
     color: #1D9E75;
 }
@@ -184,6 +184,14 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-top: 4px;
+    gap: 8px;
+}
+.post-card-type {
+    display: inline-flex;
+    margin-left: auto;
+    color: #3d514b;
+    font-size: 13px;
+    text-transform: lowercase;
 }
 
 .post-card-views {
@@ -219,6 +227,33 @@ body {
     opacity: 0.5;
 }
 
+/* ── Like Button ── */
+.like-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.like-btn:hover {
+    color: #f87171;
+}
+
+.like-btn-active {
+    color: #f87171;
+}
+
+.like-btn:disabled {
+    cursor: default;
+}
+
 /* ── Post Detail Page ── */
 .post-detail-page {
     max-width: 760px;
@@ -240,6 +275,7 @@ body {
     border: 0.5px solid #2a2a2a;
     border-radius: 12px;
     padding: 2rem;
+    margin-bottom: 2rem;
 }
 
 .post-detail-author {
@@ -279,6 +315,7 @@ body {
     font-size: 1rem;
     line-height: 1.9;
     white-space: pre-wrap;
+    margin-bottom: 1.5rem;
 }
 
 .post-detail-loading,
@@ -413,4 +450,291 @@ body {
 .post-form-btn:disabled {
     cursor: not-allowed;
     opacity: 0.6;
+}
+.post-form-select {
+    background-color: #242424;
+    border: 0.5px solid #333;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    padding: 10px 14px;
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.post-form-select:focus {
+    border-color: #1D9E75;
+}
+
+.post-form-select:hover {
+    border-color: #444;
+}
+
+.post-form-select option {
+    background-color: #242424;
+    color: #ffffff;
+}
+
+/* ── Comment Section ── */
+.comment-section {
+    background-color: #1a1a1a;
+    border: 0.5px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.comment-section-title {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.comment-divider {
+    height: 0.5px;
+    background-color: #2a2a2a;
+    margin: 1.25rem 0;
+}
+
+.comment-loading,
+.comment-empty {
+    color: #555;
+    font-size: 13px;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.comment-error {
+    color: #f87171;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ── Comment Form ── */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-form-input {
+    background-color: #242424;
+    border: 0.5px solid #333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    padding: 10px 14px;
+    transition: border-color 0.2s;
+    width: 100%;
+    resize: vertical;
+}
+
+.comment-form-input::placeholder {
+    color: #444;
+}
+
+.comment-form-input:focus {
+    border-color: #1D9E75;
+}
+
+.comment-form-btn {
+    background-color: #1D9E75;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 20px;
+    font-family: inherit;
+    align-self: flex-end;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.comment-form-btn:hover {
+    background-color: #179268;
+}
+
+.comment-form-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.comment-login-msg {
+    color: #555;
+    font-size: 13px;
+}
+
+/* ── Comment List ── */
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ── Comment Item ── */
+.comment-item {
+    display: flex;
+    gap: 12px;
+}
+
+.comment-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #1D9E75;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.comment-username {
+    color: #1D9E75;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.comment-date {
+    color: #444;
+    font-size: 12px;
+}
+
+.comment-body {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.comment-edit-btn {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: inherit;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.comment-edit-btn:hover {
+    color: #1D9E75;
+}
+
+.comment-delete-btn {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: inherit;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.comment-delete-btn:hover {
+    color: #f87171;
+}
+
+/* ── Comment Edit ── */
+.comment-edit-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.comment-edit-input {
+    background-color: #242424;
+    border: 0.5px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    padding: 8px 12px;
+    width: 100%;
+    resize: vertical;
+    transition: border-color 0.2s;
+}
+
+.comment-edit-input:focus {
+    border-color: #1D9E75;
+}
+
+.comment-edit-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.comment-edit-save {
+    background-color: #1D9E75;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px 12px;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: background-color 0.2s;
+}
+
+.comment-edit-save:hover {
+    background-color: #179268;
+}
+
+.comment-edit-cancel {
+    background: none;
+    border: 0.5px solid #333;
+    border-radius: 6px;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px 12px;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: border-color 0.2s;
+}
+
+.comment-edit-cancel:hover {
+    border-color: #555;
+    color: #fff;
 }

@@ -10,7 +10,7 @@ router.get("/:id", ReactionController.getLikes)
 router.post("/:id/comment", AuthMiddleware.authUser, ReactionController.makeComment)
 router.get("/:id/comments", ReactionController.getComments)
 router.delete("/comment/:commentId", AuthMiddleware.authUser, ReactionController.deleteComment)
-router.put("/comment/:commentId", AuthMiddleware.authUser, ReactionController.editComment)
+router.patch("/comment/:commentId", AuthMiddleware.authUser, ReactionController.editComment)
 
 
 

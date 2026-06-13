@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../auth/auth.context.jsx";
 import { useDeletePost } from "../hooks/usePosts.js";
 import { FaTrash } from "react-icons/fa"
+import LikeButton from "./LikeButton.jsx";
 
 
 const PostCard = ({ post, onDelete }) => {
@@ -11,14 +12,13 @@ const PostCard = ({ post, onDelete }) => {
     const isOwner = user && user._id === post.author?._id;
 
     const handleDelete = async (e) => {
-        e.preventDefault(); // prevent link navigation on delete
+        e.preventDefault();
         await handleDeletePost(post._id);
         if (onDelete) onDelete(post._id);
     };
 
     return (
         <div className="post-card">
-            {/* cover image — click goes to post detail */}
             <Link to={`/posts/${post._id}`}>
                 {post.cover_image ? (
                     <img
@@ -34,12 +34,16 @@ const PostCard = ({ post, onDelete }) => {
             </Link>
 
             <div className="post-card-body">
-                {/* author */}
                 <Link to={`/profile/${post.author?._id}`} className="post-card-username">
+
+                    <img
+                        className="post-card-avatar"
+                        src={post.author.avatar_image}
+                    />
+
                     @{post.author?.username}
                 </Link>
-
-                {/* title — click goes to post detail */}
+                <span className="post-card-type">{post.type}</span>
                 <Link to={`/posts/${post._id}`} className="post-card-title">
                     {post.title}
                 </Link>
@@ -50,6 +54,8 @@ const PostCard = ({ post, onDelete }) => {
                         <i className="ti ti-eye" aria-hidden="true"></i>
                         {post.views} views
                     </span>
+
+                    <LikeButton postId={post._id} />
 
                     {isOwner && (
                         <button

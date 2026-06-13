@@ -3,7 +3,7 @@ const uploadFile = require("../services/storage.service");
 
 const createPost = async (req, res) => {
     try {
-        const { title, content } = req.body;
+        const { title, content, type } = req.body;
 
         if (!title || !content) {
             return res.status(400).json({
@@ -11,22 +11,28 @@ const createPost = async (req, res) => {
             });
         }
 
-        const uploadedCover = await uploadFile(req.file.buffer);
+        let coverImage = "";
+
+        if (req.file) {
+            const uploadedCover = await uploadFile(req.file.buffer);
+            coverImage = uploadedCover.url;
+        }
 
         const post = await postModel.create({
             author: req.user._id,
             title,
             content,
-            cover_image: uploadedCover.url,
+            cover_image: coverImage,
+            type
         });
 
         res.status(201).json({
             message: "Post created successfully",
             post
         });
-        
+
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ message: err.message });
     }
 }
 
@@ -59,7 +65,7 @@ const getPostById = async (req, res) => {
 const updatePost = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, content } = req.body;
+        const { title, content, type } = req.body;
 
         const post = await postModel.findById(id);
 
@@ -73,6 +79,7 @@ const updatePost = async (req, res) => {
 
         if (title) post.title = title;
         if (content) post.content = content;
+        if (type) post.type = type;
 
         if (req.file) {
             const uploadedCover = await uploadFile(req.file.buffer);
@@ -110,11 +117,29 @@ const deletePost = async (req, res) => {
     }
 }
 
+const incrementViews = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const post = await postModel.findByIdAndUpdate(
+            id,
+            { $inc: { views: 1 } }, // increment by 1
+            { new: true }
+        );
+        if (!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
+        res.status(200).json({ views: post.views });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     createPost,
     getAllPosts,
     getPostById,
     updatePost,
-    deletePost
+    deletePost,
+    incrementViews
 };
 

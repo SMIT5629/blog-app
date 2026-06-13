@@ -20,7 +20,6 @@ const Profile = () => {
     if (loading) return <p className="profile-loading">Loading...</p>;
     if (error) return <p className="profile-error">{error}</p>;
     if (!profile) return null;
-    console.log(profile)
 
     return (
         <div className="profile-page">
