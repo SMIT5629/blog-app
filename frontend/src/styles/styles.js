@@ -1,0 +1,1 @@
+import "../../src/features/posts/styles/posts.css";

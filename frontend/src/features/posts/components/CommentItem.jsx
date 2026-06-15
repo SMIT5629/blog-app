@@ -23,27 +23,24 @@ const CommentItem = ({ comment, onDelete, onEdit }) => {
 
     return (
         <div className="comment-item">
-            <Link to={`/profile/${comment.user?._id}`} className="comment-avatar">
-                {comment.user?.avatar_image ? (
-                    <img
-                        className="comment-avatar-img"
-                        src={comment.user.avatar_image}
-                        alt={comment.user.username}
-                    />
-                ) : (
-                    <div className="comment-avatar">
-                        {comment.user?.username?.charAt(0).toUpperCase()}
-                    </div>
-                )}
-            </Link>
+            <div className="post-detail-author-wrap">
+                <Link to={`/profile/${comment.user?._id}`} >
+                    <img src={comment.user?.avatar_image} className="navbar-avatar-img" />
+                </Link>
+               
+            </div>
 
-            <div className="comment-content">
+            <div className="comment-content"> 
+                <Link to={`/profile/${comment.user?._id}`} className="comment-author">
+                    {comment.user?.username}
+                </Link>
                 <div className="comment-header">
-                    <Link to={`/profile/${comment.user?._id}`} className="comment-username">
-                        @{comment.user?.username}
-                    </Link>
                     <span className="comment-date">
-                        {new Date(comment.createdAt).toLocaleDateString()}
+                        {new Date(comment.createdAt).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric"
+                        })}
                     </span>
                 </div>
 

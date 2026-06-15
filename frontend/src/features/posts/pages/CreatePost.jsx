@@ -3,8 +3,6 @@ import { useCreatePost } from "../hooks/usePosts.js";
 import PostForm from "../components/PostForm.jsx";
 
 
-import "../styles/posts.css";
-
 const CreatePost = () => {
     const { handleCreatePost, loading, error } = useCreatePost();
     const navigate = useNavigate();

@@ -3,8 +3,6 @@ import { useAuthContext } from "../../auth/auth.context.jsx";
 import PostFeed from "../components/PostFeed.jsx";
 
 
-import "../styles/posts.css"
-
 const Home = () => {
     const { user } = useAuthContext();
 

@@ -64,7 +64,7 @@ const makeComment = async (req, res) => {
 const getComments = async (req, res) => {
     const postId = req.params.id;
     try {
-        const comments = await commentModel.find({ post: postId }).populate("user", "username");
+        const comments = await commentModel.find({ post: postId }).populate("user", "username avatar_image");
         res.status(200).json({ comments });
     }
     catch (error) {
