@@ -1,14 +1,44 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useAuthContext } from "../../auth/auth.context.jsx";
 import PostFeed from "../components/PostFeed.jsx";
 
 
 const Home = () => {
     const { user } = useAuthContext();
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const categories = [
+        "TECH",
+        "LIFESTYLE",
+        "TRAVEL",
+        "FOOD",
+        "OTHER",
+    ];
 
     return (
         <div className="home-page">
+            {user && (
+                <section className="hero-section">
+                    <h1>What's on your mind today?</h1>
+                    <p>
+                        Discover stories from writers across tech, design,
+                        science, and life.
+                    </p>
 
+
+                    <div className="categories">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                className={selectedCategory === cat ? "active" : ""}
+                                onClick={() => setSelectedCategory(selectedCategory === cat ? null : cat)}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                </section>)
+            }
             {/* hero — only show if not logged in */}
             {!user && (
                 <div className="home-hero">
@@ -23,7 +53,7 @@ const Home = () => {
 
             <div className="home-feed">
                 <p className="home-feed-label">Latest posts</p>
-                <PostFeed />
+                <PostFeed type={selectedCategory} />
             </div>
         </div>
     );

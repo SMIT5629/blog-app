@@ -52,7 +52,7 @@ const getFollowers = async (req, res) => {
     try {
         const followers = await followsModel.find({
             followee: userId
-        }).populate("follower", "username");
+        }).populate("follower", "username avatar_image");
         res.status(200).json({
             followers,
             followersCount: followers.length
@@ -68,7 +68,7 @@ const getFollowing = async (req, res) => {
     try {
         const following = await followsModel.find({
             follower: userId
-        }).populate("followee", "username");
+        }).populate("followee", "username avatar_image");
         res.status(200).json({
             following,
             followingCount: following.length

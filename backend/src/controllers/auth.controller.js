@@ -210,11 +210,11 @@ const getUserProfile = async (req, res) => {
     }
 }
 
-module.exports = {
-    signUp,
-    signIn,
-    signOut,
-    getMe,
-    updateProfile,
-    getUserProfile
-};
+    module.exports = {
+        signUp,
+        signIn,
+        signOut,
+        getMe,
+        updateProfile,
+        getUserProfile,
+    };

@@ -37,7 +37,7 @@ export const useFollow = (userId) => {
 
 export const useGetFollowers = (userId) => {
     const [followers, setFollowers] = useState([]);
-    const [followersCount, setFollowersCount] = useState(0); // ✅ added
+    const [followersCount, setFollowersCount] = useState(0); 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -46,7 +46,7 @@ export const useGetFollowers = (userId) => {
             try {
                 const data = await getFollowers(userId);
                 setFollowers(data.followers);
-                setFollowersCount(data.followersCount); // ✅ added
+                setFollowersCount(data.followersCount);
             } catch (err) {
                 setError(err.response?.data?.message || "Failed to fetch followers");
             } finally {
@@ -56,12 +56,12 @@ export const useGetFollowers = (userId) => {
         if (userId) fetch();
     }, [userId]);
 
-    return { followers, followersCount, loading, error }; // ✅ added
+    return { followers, followersCount, loading, error }; 
 };
 
 export const useGetFollowing = (userId) => {
     const [following, setFollowing] = useState([]);
-    const [followingCount, setFollowingCount] = useState(0); // ✅ added
+    const [followingCount, setFollowingCount] = useState(0); 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -70,7 +70,7 @@ export const useGetFollowing = (userId) => {
             try {
                 const data = await getFollowing(userId);
                 setFollowing(data.following);
-                setFollowingCount(data.followingCount); // ✅ added
+                setFollowingCount(data.followingCount);
             } catch (err) {
                 setError(err.response?.data?.message || "Failed to fetch following");
             } finally {
@@ -80,5 +80,10 @@ export const useGetFollowing = (userId) => {
         if (userId) fetch();
     }, [userId]);
 
-    return { following, followingCount, loading, error }; // ✅ added
+    return { following, followingCount, loading, error }; 
 };
+
+export const useFollowers=()=>{
+    
+
+}
