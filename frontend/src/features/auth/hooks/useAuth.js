@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signIn, signUp } from "../services/auth.api.js";
+import { getMe as getMeApi, signIn, signUp } from "../services/auth.api.js";
 import { useAuthContext } from "../auth.context.jsx";
 
 const useAuth = () => {
@@ -42,7 +42,20 @@ const useAuth = () => {
         navigate("/login");
     };
 
-    return { loading, error, handleSignUp, handleSignIn, handleSignOut };
+    const getMe = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const data = await getMeApi();
+            login(data.user);
+        } catch (err) {
+            setError(err.response?.data?.message || "Something went wrong");
+        } finally {
+            setLoading(false);
+        }   
+    };
+
+    return { loading, error, handleSignUp, handleSignIn, handleSignOut, getMe };
 };
 
 export default useAuth;

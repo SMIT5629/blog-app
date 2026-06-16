@@ -13,6 +13,7 @@ const userRoutes = require("./routes/users.route")
 
 const  app = express();
 
+app.set("trust proxy", 1);
 connectDB();
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))

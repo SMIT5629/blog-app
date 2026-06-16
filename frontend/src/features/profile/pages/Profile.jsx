@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { useAuthContext } from "../../auth/auth.context.jsx";
 import useProfile from "../hooks/useProfile.js";
 import { useGetFollowers, useGetFollowing } from "../hooks/useFollow.js";
@@ -9,14 +9,18 @@ import "../styles/profile.css";
 const Profile = () => {
 
     const { id } = useParams();
-    const { user: loggedInUser } = useAuthContext();
-    const { profile, loading, error } = useProfile(id);
-    const { followers, followersCount } = useGetFollowers(id);
-    const { followingCount } = useGetFollowing(id);
+    const { user: loggedInUser, loading: authLoading } = useAuthContext();
+    const loggedInUserId = loggedInUser?._id || loggedInUser?.id;
+    const profileId = id === "me" ? loggedInUserId : id;
+    const { profile, loading, error } = useProfile(profileId);
+    const { followers, followersCount } = useGetFollowers(profileId);
+    const { followingCount } = useGetFollowing(profileId);
 
-    const isOwnProfile = loggedInUser && (loggedInUser._id === id || loggedInUser.id === id);
+    const isOwnProfile = loggedInUser && (id === "me" || loggedInUserId === profileId);
     const avatarLetter = profile?.username?.charAt(0).toUpperCase();
 
+    if (id === "me" && authLoading) return <p className="profile-loading">Loading...</p>;
+    if (id === "me" && !loggedInUser) return <Navigate to="/login" />;
     if (loading) return <p className="profile-loading">Loading...</p>;
     if (error) return <p className="profile-error">{error}</p>;
     if (!profile) return null;
@@ -44,8 +48,8 @@ const Profile = () => {
                         ) : (
                             loggedInUser && (
                                 <FollowButton
-                                    userId={id}
-                                    initialIsFollowing={followers.some(f => f.follower._id === loggedInUser._id)}
+                                    userId={profileId}
+                                    initialIsFollowing={followers.some(f => f.follower._id === loggedInUserId)}
                                     initialCount={followersCount}
                                 />
                             )
@@ -58,11 +62,11 @@ const Profile = () => {
                         <span className="profile-stat-num">{profile.postsCount}</span>
                         <span className="profile-stat-label">Posts</span>
                     </div>
-                    <Link to={`/profile/${id}/followers`} className="profile-stat">
+                    <Link to={`/profile/${profileId}/followers`} className="profile-stat">
                         <span className="profile-stat-num">{followersCount}</span>
                         <span className="profile-stat-label">Followers</span>
                     </Link>
-                    <Link to={`/profile/${id}/following`} className="profile-stat">
+                    <Link to={`/profile/${profileId}/following`} className="profile-stat">
                         <span className="profile-stat-num">{followingCount}</span>
                         <span className="profile-stat-label">Following</span>
                     </Link>

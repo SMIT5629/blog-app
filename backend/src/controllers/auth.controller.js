@@ -7,6 +7,14 @@ const tokenBlackListModel = require("../models/blacklist.model");
 const emailService = require("../services/email.service");
 const uploadFile = require("../services/storage.service");
 
+const isDeployedClient = process.env.CLIENT_URL?.startsWith("https://");
+const authCookieOptions = {
+    httpOnly: true,
+    sameSite: isDeployedClient ? "none" : "lax",
+    secure: Boolean(isDeployedClient),
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+};
+
 const signUp = async (req, res) => {
     try {
         const { name, username, email, password } = req.body;
@@ -33,15 +41,11 @@ const signUp = async (req, res) => {
 
         const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
-        res.cookie("token", token, {
-            httpOnly: true,
-            sameSite: "strict",
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-        });
+        res.cookie("token", token, authCookieOptions);
 
         res.status(201).json({
             message: "User registered successfully",
-            user: { id: newUser._id, name, username, email },
+            user: { _id: newUser._id, id: newUser._id, name, username, email },
             token
         });
     } catch (error) {
@@ -74,15 +78,11 @@ const signIn = async (req, res) => {
             return res.status(401).json({ message: "Token is blacklisted. Please sign in again." });
         }
 
-        res.cookie("token", token, {
-            httpOnly: true,
-            sameSite: "strict",
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-        });
+        res.cookie("token", token, authCookieOptions);
 
         res.status(200).json({
             message: "User signed in successfully",
-            user: { id: user._id, name: user.name, username: user.username, email: user.email },
+            user: { _id: user._id, id: user._id, name: user.name, username: user.username, email: user.email },
             token
         });
     } catch (error) {
@@ -97,7 +97,11 @@ const signOut = async (req, res) => {
             return res.status(400).json({ message: "No token provided" });
         }
         await tokenBlackListModel.create({ token });
-        res.clearCookie("token");
+        res.clearCookie("token", {
+            httpOnly: authCookieOptions.httpOnly,
+            sameSite: authCookieOptions.sameSite,
+            secure: authCookieOptions.secure,
+        });
         res.status(200).json({ message: "User signed out successfully" });
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -188,7 +192,7 @@ const updateProfile = async (req, res) => {
 
 const getUserProfile = async (req, res) => {
     try {
-        const userId = req.params.id;
+        const userId = req.params.id || req.user?._id;
         const user = await userModel.findById(userId).select("-password");
         if (!user) {
             return res.status(404).json({ message: "User not found" });

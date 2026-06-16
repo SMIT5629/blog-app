@@ -6,6 +6,7 @@ import { FiHome, FiEdit } from "react-icons/fi"
 const Navbar = () => {
     const { user } = useAuthContext();
     const { handleSignOut } = useAuth();
+    const userId = user?._id || user?.id;
 
     return (
         <nav className="navbar">
@@ -29,7 +30,7 @@ const Navbar = () => {
                         <button className="navbar-btn-ghost" onClick={handleSignOut}>
                             Sign out
                         </button>
-                        <Link to={`/profile/${user._id}`} >
+                        <Link to={userId ? `/profile/${userId}` : "/profile/me"} >
                             <img src={user.avatar_image} className="navbar-avatar-img" alt={user.username} />
                         </Link>
                        
