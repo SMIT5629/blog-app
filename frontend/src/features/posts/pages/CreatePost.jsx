@@ -15,7 +15,6 @@ const CreatePost = () => {
     return (
         <div className="home-page">
             <div className="create-post-page">
-                <h1 className="create-post-title">Write a Post</h1>
                 <PostForm onSubmit={handleSubmit} loading={loading} error={error} />
             </div>
         </div>

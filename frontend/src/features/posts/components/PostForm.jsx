@@ -26,6 +26,8 @@ const PostForm = ({ onSubmit, loading, error, initialData = {} }) => {
         <form className="post-form" onSubmit={handleSubmit}>
             {error && <p className="post-form-error">{error}</p>}
 
+             <p className="post-form-tagline">What's on your mind?</p>
+
             <div className="post-form-group">
                 <label>Title</label>
                 <input
@@ -33,7 +35,7 @@ const PostForm = ({ onSubmit, loading, error, initialData = {} }) => {
                     className="post-form-input"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Enter post title"
+                    placeholder="Title"
                     required
                 />
             </div>
