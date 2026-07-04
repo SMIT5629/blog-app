@@ -881,6 +881,32 @@ body {
     cursor: not-allowed;
     opacity: 0.5;
 }
+.post-card-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-card-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.post-card-icon-btn {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.post-card-icon-btn:hover { color: #1D9E75; }
 
 /* ── Create Post Page ── */
 .create-post-page {

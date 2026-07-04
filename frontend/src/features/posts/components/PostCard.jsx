@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../auth/auth.context.jsx";
 import { useDeletePost } from "../hooks/usePosts.js";
 import { FaTrash } from "react-icons/fa";
+import { FiEdit } from "react-icons/fi";
 import LikeButton from "./LikeButton.jsx";
 
 const PostCard = ({ post, onDelete }) => {
@@ -19,18 +20,18 @@ const PostCard = ({ post, onDelete }) => {
     return (
         <div className="post-card">
 
-            {/* ── Row 1: Author + Date ── */}
+            {/* ── Row 1: Author + Type + Date ── */}
             <div className="post-card-meta">
                 <Link to={`/profile/${post.author?._id}`} className="post-card-author-wrap">
                     {post.author?.avatar_image ? (
                         <img
                             src={post.author.avatar_image}
                             className="post-card-avatar-img"
-                            alt={post.author.name}
+                            alt={post.author.username}
                         />
                     ) : (
                         <div className="post-card-avatar-placeholder">
-                            {post.author?.name?.charAt(0).toUpperCase()}
+                            {post.author?.username?.charAt(0).toUpperCase()}
                         </div>
                     )}
                     <span className="post-card-author">{post.author?.username}</span>
@@ -43,7 +44,7 @@ const PostCard = ({ post, onDelete }) => {
                 </span>
             </div>
 
-            {/* ── Row 2: Content + Thumbnail ── */}
+            {/* ── Row 2: Title + Thumbnail ── */}
             <div className="post-card-main">
                 <div className="post-card-content">
                     <Link to={`/posts/${post._id}`} className="post-card-title">
@@ -71,27 +72,33 @@ const PostCard = ({ post, onDelete }) => {
 
             {/* ── Row 3: Footer ── */}
             <div className="post-card-footer">
-                <span className="post-card-views">
-                    <i className="ti ti-eye" aria-hidden="true"></i>
-                    {post.views}
-                </span>
-
-                <LikeButton postId={post._id} />
+                <div className="post-card-footer-left">
+                    <span className="post-card-views">
+                        <i className="ti ti-eye" aria-hidden="true"></i>
+                        {post.views}
+                    </span>
+                    <LikeButton postId={post._id} />
+                </div>
 
                 <div className="post-card-footer-right">
-                    <button className="post-card-icon-btn" aria-label="Bookmark">
-                        <i className="ti ti-bookmark" aria-hidden="true"></i>
-                    </button>
-
                     {isOwner && (
-                        <button
-                            className="post-card-delete-btn"
-                            onClick={handleDelete}
-                            disabled={loading}
-                            aria-label="Delete post"
-                        >
-                            {loading ? "..." : <FaTrash />}
-                        </button>
+                        <>
+                            <Link
+                                to={`/posts/${post._id}/edit`}
+                                className="post-card-icon-btn"
+                                aria-label="Edit post"
+                            >
+                                <FiEdit size={13} />
+                            </Link>
+                            <button
+                                className="post-card-delete-btn"
+                                onClick={handleDelete}
+                                disabled={loading}
+                                aria-label="Delete post"
+                            >
+                                {loading ? "..." : <FaTrash size={11} />}
+                            </button>
+                        </>
                     )}
                 </div>
             </div>
