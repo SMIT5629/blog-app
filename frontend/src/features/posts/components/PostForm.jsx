@@ -26,7 +26,7 @@ const PostForm = ({ onSubmit, loading, error, initialData = {} }) => {
         <form className="post-form" onSubmit={handleSubmit}>
             {error && <p className="post-form-error">{error}</p>}
 
-             <p className="post-form-tagline">What's on your mind?</p>
+            <p className="post-form-tagline">What's on your mind?</p>
 
             <div className="post-form-group">
                 <label>Title</label>
@@ -52,8 +52,8 @@ const PostForm = ({ onSubmit, loading, error, initialData = {} }) => {
                 />
             </div>
 
-            <div className="post-form-group">
-                <label>Cover Image (optional)</label>
+            <div className="post-form-group post-form-group-labeled">
+                <label>Cover image (optional)</label>
                 <input
                     type="file"
                     className="post-form-file"
@@ -61,7 +61,8 @@ const PostForm = ({ onSubmit, loading, error, initialData = {} }) => {
                     onChange={(e) => setCoverImage(e.target.files[0])}
                 />
             </div>
-            <div className="post-form-group">
+
+            <div className="post-form-group post-form-group-labeled">
                 <label>Type</label>
                 <select
                     className="post-form-select"
@@ -77,7 +78,7 @@ const PostForm = ({ onSubmit, loading, error, initialData = {} }) => {
             </div>
 
             <button className="post-form-btn" type="submit" disabled={loading}>
-                {loading ? "Saving..." : "Publish Post"}
+                {loading ? "Saving..." : "Publish post"}
             </button>
         </form>
     );

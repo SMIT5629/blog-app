@@ -214,11 +214,50 @@ const getUserProfile = async (req, res) => {
     }
 }
 
-    module.exports = {
-        signUp,
-        signIn,
-        signOut,
-        getMe,
-        updateProfile,
-        getUserProfile,
-    };
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await userModel.aggregate([
+            {
+                $lookup: {
+                    from: "follows",
+                    localField: "_id",
+                    foreignField: "followee",
+                    as: "followers",
+                },
+            },
+            {
+                $lookup: {
+                    from: "posts",
+                    localField: "_id",
+                    foreignField: "author",
+                    as: "posts",
+                },
+            },
+            {
+                $project: {
+                    name: 1,
+                    username: 1,
+                    email: 1,
+                    avatar_image: 1,
+                    bio: 1,
+                    followersCount: { $size: "$followers" },
+                    postsCount: { $size: "$posts" },
+                },
+            },
+        ]);
+
+        res.status(200).json({ users });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+module.exports = {
+    signUp,
+    signIn,
+    signOut,
+    getMe,
+    updateProfile,
+    getUserProfile,
+    getAllUsers
+};

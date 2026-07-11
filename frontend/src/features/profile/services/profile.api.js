@@ -10,3 +10,8 @@ export const updateProfile = async (formData) => {
     return response.data;
 };
 
+export const getAllUsers = async () => {
+    const response = await axiosInstance.get(`/api/users`);
+    return response.data.users;
+};
+

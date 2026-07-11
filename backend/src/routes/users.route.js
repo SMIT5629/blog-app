@@ -8,6 +8,7 @@ const MulterMiddleware = require("../middlewares/multer.middleware")
 router.patch("/me", AuthMiddleware.authUser, MulterMiddleware.upload.single("avatar_image"), AuthController.updateProfile);
 router.get("/me", AuthMiddleware.authUser, AuthController.getUserProfile);
 router.get("/:id", AuthController.getUserProfile);
+router.get("/", AuthController.getAllUsers);
 
 
 module.exports = router;

@@ -11,83 +11,174 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* ── Home Page ── */
-.home-page {
-    min-height: 100vh;
-    background-color: #0f0f0f;
-}
-
-/* ── Hero ── */
-.home-hero {
-    padding: 4rem 2rem;
-    text-align: center;
-    border-bottom: 0.5px solid #222;
-    max-width: 700px;
+/* ── Layout (feed + sidebar) ── */
+.home-layout {
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
 }
 
-.home-hero h1 {
-    color: #ffffff;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.5px;
-}
-
-.home-hero p {
-    color: #666;
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
-.home-hero-btns {
+/* ── Sidebar ── */
+.home-sidebar {
     display: flex;
-    gap: 10px;
-    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    top: 2rem;
 }
 
-.home-hero-btn-solid {
-    background-color: #1D9E75;
-    border: none;
-    border-radius: 8px;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 14px;
+.sidebar-title {
+    color: #e8e8e8;
+    font-size: 16px;
     font-weight: 500;
-    padding: 10px 24px;
+    margin-bottom: 12px;
+}
+
+.sidebar-empty {
+    color: #555;
+    font-size: 13px;
+}
+
+/* Who to follow (sidebar widget on Home) — prefixed "sidebar-" so it
+   never collides with profile.css's own .who-to-follow-* classes */
+.sidebar-who-to-follow-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.sidebar-who-to-follow-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-who-to-follow-avatar-link {
+    flex-shrink: 0;
     text-decoration: none;
-    transition: background-color 0.2s;
 }
 
-.home-hero-btn-solid:hover {
-    background-color: #179268;
+.sidebar-who-to-follow-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
 }
 
-.home-hero-btn-outline {
-    background: none;
-    border: 0.5px solid #444;
-    border-radius: 8px;
-    color: #ccc;
-    cursor: pointer;
-    font-size: 14px;
-    padding: 10px 24px;
-    text-decoration: none;
-    transition: border-color 0.2s;
-}
-
-.home-hero-btn-outline:hover {
-    border-color: #666;
+.sidebar-who-to-follow-avatar-placeholder {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #1D9E75;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
     color: #fff;
 }
 
-/* hero section */
+.sidebar-who-to-follow-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar-who-to-follow-name {
+    color: #e8e8e8;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar-who-to-follow-name:hover {
+    color: #1D9E75;
+}
+
+.sidebar-who-to-follow-meta {
+    color: #555;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.sidebar-who-to-follow-btn {
+    flex-shrink: 0;
+    background: transparent;
+    border: 0.5px solid #444;
+    color: #e8e8e8;
+    border-radius: 16px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.sidebar-who-to-follow-btn:hover {
+    border-color: #1D9E75;
+    color: #1D9E75;
+}
+
+/* Recommended topic card */
+.sidebar-card {
+    background: #16352e;
+    border-radius: 12px;
+    padding: 1.25rem;
+}
+
+.sidebar-card-title {
+    color: #7fe3c4;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+
+.sidebar-card-text {
+    color: #b7ded2;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 14px;
+}
+
+.sidebar-card-btn {
+    display: inline-block;
+    background: #e8e8e8;
+    color: #0f0f0f;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.sidebar-card-btn:hover {
+    background-color: #ffffff;
+}
+
+/* ── Responsive: stack sidebar below feed on smaller screens ── */
+@media (max-width: 900px) {
+    .home-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .home-sidebar {
+        position: static;
+    }
+}
+
 /* ── Hero Section ── */
 .hero-section {
-    max-width: 700px;
-    margin: 2rem auto;
-    padding-bottom: 1rem;
-    text-align: center;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
     border-bottom: 0.5px solid #222;
 }
 
@@ -109,7 +200,7 @@ body {
 /* Categories */
 .categories {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -137,11 +228,13 @@ body {
     color: #fff;
 }
 
-/* ── Feed ── */
+/* ── Feed ──
+   NOTE: .home-feed now lives inside .home-layout (grid), so it no longer
+   needs its own max-width/margin/padding — .home-layout controls that. */
 .home-feed {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
+    max-width: none;
+    margin: 0;
+    padding: 0;
 }
 
 .home-feed-label {
@@ -291,7 +384,6 @@ body {
     margin-bottom: 2rem;
 }
 
-
 /* ── Content ── */
 .post-detail-content {
     color: #c0c0c0;
@@ -300,7 +392,6 @@ body {
     white-space: pre-wrap;
     margin-bottom: 3rem;
 }
-
 
 /* ── Suggested ── */
 .post-detail-suggested {
@@ -644,39 +735,6 @@ body {
     color: #fff;
 }
 
-/* ── Feed ── */
-.home-feed {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-}
-
-.home-feed-label {
-    color: #555;
-    font-size: 13px;
-    margin-bottom: 1.25rem;
-}
-
-.post-feed {
-    display: flex;
-    flex-direction: column;
-}
-
-.feed-loading,
-.feed-empty {
-    color: #555;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 3rem;
-}
-
-.feed-error {
-    color: #f87171;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 3rem;
-}
-
 /* ── Post Card ── */
 .post-card {
     display: flex;
@@ -833,11 +891,17 @@ body {
     font-size: 14px;
 }
 
+.post-card-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .post-card-footer-right {
     margin-left: auto;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
 }
 
 .post-card-icon-btn {
@@ -851,10 +915,11 @@ body {
     align-items: center;
     font-size: 15px;
     transition: color 0.15s, background 0.15s;
+    text-decoration: none;
 }
 
 .post-card-icon-btn:hover {
-    color: #c8c8c8;
+    color: #1D9E75;
     background: #1e1e1e;
 }
 
@@ -881,39 +946,15 @@ body {
     cursor: not-allowed;
     opacity: 0.5;
 }
-.post-card-footer-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.post-card-footer-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.post-card-icon-btn {
-    background: none;
-    border: none;
-    color: #555;
-    cursor: pointer;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    transition: color 0.2s;
-    text-decoration: none;
-}
-
-.post-card-icon-btn:hover { color: #1D9E75; }
 
 /* ── Create Post Page ── */
 .create-post-page {
+    min-height: 100vh;
     max-width: 760px;
     margin: 0 auto;
     padding: 4rem 1.5rem;
 }
+
 /* ── Post Form ── */
 .post-form {
     background: transparent;
@@ -1061,6 +1102,7 @@ body {
     cursor: not-allowed;
     opacity: 0.6;
 }
+
 .post-form-tagline {
     color: #aaa;
     font-size: 0.75rem;

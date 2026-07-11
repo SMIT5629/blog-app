@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUserProfile, updateProfile } from "../services/profile.api";
+import { getAllUsers, getUserProfile, updateProfile } from "../services/profile.api";
 
 const useProfile = (id) => {
     const [profile, setProfile] = useState(null);
@@ -13,7 +13,7 @@ const useProfile = (id) => {
 
                 setProfile({
                     ...data.user,
-                    posts: data.posts,            
+                    posts: data.posts,
                     postsCount: data.postsCount,
                 });
             } catch (err) {
@@ -49,6 +49,28 @@ export const useUpdateProfile = () => {
     };
 
     return { handleUpdateProfile, loading, error, success };
+};
+
+export const useUsers = () => {
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetch = async () => {
+            try {
+                const data = await getAllUsers();
+                setUsers(data);
+            } catch (err) {
+                setError(err.response?.data?.message || "Failed to fetch users");
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetch();
+    }, []);
+
+    return { users, loading, error };
 };
 
 export default useProfile;

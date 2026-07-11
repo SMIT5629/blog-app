@@ -14,6 +14,7 @@ import Profile from "./features/profile/pages/Profile";
 import Followers from "./features/profile/pages/Followers";
 import Following from "./features/profile/pages/Following";
 import EditProfile from "./features/profile/pages/EditProfile";
+import FollowFeedPage from "./features/profile/pages/FollowFeedPage.jsx";
 
 import Layout from "./shared/components/Layout.jsx";
 
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
             { path: "/profile/:id/followers", element: <Followers /> },
             { path: "/profile/:id/following", element: <Following /> },
             { path: "/profile/me/edit", element: <EditProfile /> },
+            { path: "/follow-feed", element: <FollowFeedPage /> },
             {
                 element: <ProtectedRoute />,
                 children: [

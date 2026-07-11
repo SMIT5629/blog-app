@@ -38,7 +38,7 @@ const createPost = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
     try {
-        const posts = await postModel.find().populate('author', 'name username avatar_image');
+        const posts = (await postModel.find().populate('author', 'name username avatar_image')).reverse();
         res.status(200).json({ posts });
 
     } catch (err) {

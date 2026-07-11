@@ -13,10 +13,8 @@ const CreatePost = () => {
     };
 
     return (
-        <div className="home-page">
-            <div className="create-post-page">
-                <PostForm onSubmit={handleSubmit} loading={loading} error={error} />
-            </div>
+        <div className="create-post-page">
+            <PostForm onSubmit={handleSubmit} loading={loading} error={error} />
         </div>
     );
 };

@@ -1,12 +1,27 @@
 import { Link } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
 import { useAuthContext } from "../../features/auth/auth.context.jsx";
 import useAuth from "../../features/auth/hooks/useAuth.js";
-import { FiHome, FiEdit } from "react-icons/fi"
+import { FiHome, FiEdit, FiLogOut, FiUser, FiChevronDown } from "react-icons/fi";
 
 const Navbar = () => {
     const { user } = useAuthContext();
     const { handleSignOut } = useAuth();
     const userId = user?._id || user?.id;
+    const profilePath = userId ? `/profile/${userId}` : "/profile/me";
+
+    const [menuOpen, setMenuOpen] = useState(false);
+    const menuRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (menuRef.current && !menuRef.current.contains(e.target)) {
+                setMenuOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
         <nav className="navbar">
@@ -16,24 +31,60 @@ const Navbar = () => {
             </Link>
 
             <div className="navbar-right">
-                <Link to="/" className="navbar-btn-ghost">
-                    <FiHome size={20} />
+                <Link to="/" className="navbar-icon-btn" aria-label="Home">
+                    <FiHome size={18} />
                 </Link>
+
                 {user ? (
                     <>
-
-                        <Link to="/create-post" className="navbar-btn-ghost">
-                            <FiEdit size={20} />
+                        <Link to="/create-post" className="navbar-icon-btn" aria-label="Write a post">
+                            <FiEdit size={18} />
                         </Link>
-                
 
-                        <button className="navbar-btn-ghost" onClick={handleSignOut}>
-                            Sign out
-                        </button>
-                        <Link to={userId ? `/profile/${userId}` : "/profile/me"} >
-                            <img src={user.avatar_image} className="navbar-avatar-img" alt={user.username} />
-                        </Link>
-                       
+                        <div className="navbar-menu" ref={menuRef}>
+                            <button
+                                className="navbar-menu-trigger"
+                                onClick={() => setMenuOpen((prev) => !prev)}
+                                aria-expanded={menuOpen}
+                                aria-label="Account menu"
+                            >
+                                {user.avatar_image ? (
+                                    <img
+                                        src={user.avatar_image}
+                                        className="navbar-avatar-img"
+                                        alt={user.username}
+                                    />
+                                ) : (
+                                    <span className="navbar-avatar-placeholder">
+                                        {user.username?.[0]?.toUpperCase()}
+                                    </span>
+                                )}
+                                <FiChevronDown size={14} className="navbar-menu-chevron" />
+                            </button>
+
+                            {menuOpen && (
+                                <div className="navbar-menu-dropdown">
+                                    <Link
+                                        to={profilePath}
+                                        className="navbar-menu-item"
+                                        onClick={() => setMenuOpen(false)}
+                                    >
+                                        <FiUser size={15} />
+                                        Profile
+                                    </Link>
+                                    <button
+                                        className="navbar-menu-item navbar-menu-item-danger"
+                                        onClick={() => {
+                                            setMenuOpen(false);
+                                            handleSignOut();
+                                        }}
+                                    >
+                                        <FiLogOut size={15} />
+                                        Sign out
+                                    </button>
+                                </div>
+                            )}
+                        </div>
                     </>
                 ) : (
                     <>
