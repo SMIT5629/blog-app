@@ -4,7 +4,6 @@ import useProfile from "../hooks/useProfile.js";
 import { useGetFollowers, useGetFollowing } from "../hooks/useFollow.js";
 import FollowButton from "../components/FollowButton.jsx";
 import PostCard from "../../posts/components/PostCard.jsx";
-import "../styles/profile.css";
 
 const Profile = () => {
 

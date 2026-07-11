@@ -27,8 +27,9 @@ const Home = () => {
                         <Link to="/login" className="home-hero-btn-outline">Sign in</Link>
                     </div>
                 </div>
+                
             )}
-
+                <br></br>
             <div className="home-layout">
                 <div className="home-feed">
                     {user && (

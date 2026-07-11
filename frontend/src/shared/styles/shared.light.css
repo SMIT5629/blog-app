@@ -1,0 +1,313 @@
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 0.5px solid #e5e5e5;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-logo {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.3px;
+}
+
+.navbar-logo i {
+    color: #1D9E75;
+    font-size: 20px;
+}
+
+.navbar-avatar-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+}
+
+/* was missing — needed when the user has no avatar_image */
+.navbar-avatar-placeholder {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #1D9E75;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* text ghost button — Sign in */
+.navbar-btn-ghost {
+    background: none;
+    border: 0.5px solid #e0e0e0;
+    border-radius: 8px;
+    color: #333;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 6px 16px;
+    text-decoration: none;
+    font-family: inherit;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.navbar-btn-ghost:hover {
+    border-color: #1D9E75;
+    color: #1D9E75;
+}
+
+/* icon-only ghost buttons (Home, Write) — square instead of pill-padded */
+.navbar-icon-btn {
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: #666;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.navbar-icon-btn:hover {
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+}
+
+/* ── Profile dropdown ── */
+.navbar-menu {
+    position: relative;
+    margin-left: 4px;
+}
+
+.navbar-menu-trigger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 4px 2px 2px;
+    border-radius: 20px;
+    transition: background-color 0.15s;
+}
+
+.navbar-menu-trigger:hover {
+    background-color: #f5f5f5;
+}
+
+.navbar-menu-chevron {
+    color: #888;
+}
+
+.navbar-menu-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: #ffffff;
+    border: 0.5px solid #e5e5e5;
+    border-radius: 10px;
+    min-width: 160px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 6px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 13px;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.navbar-menu-item:hover {
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+}
+
+.navbar-menu-item-danger {
+    color: #dc2626;
+}
+
+.navbar-menu-item-danger:hover {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+.navbar-btn-solid {
+    background-color: #1D9E75;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 16px;
+    text-decoration: none;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.navbar-btn-solid:hover {
+    background-color: #179268;
+}
+
+/* ── Footer ── */
+.footer {
+    background-color: #ffffff;
+    border-top: 0.5px solid #e5e5e5;
+    margin-top: 4rem;
+}
+
+/* widened from 900px to match .home-layout (1100px) so the footer
+   lines up with the page content above it instead of looking narrower */
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+}
+
+/* ── Brand ── */
+.footer-logo {
+    font-size: 17px;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.3px;
+}
+
+.footer-logo svg {
+    color: #1D9E75;
+}
+
+.footer-tagline {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ── Nav Links ── */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links-title {
+    color: #888;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+}
+
+.footer-link {
+    color: #666;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s;
+    width: fit-content;
+}
+
+.footer-link:hover {
+    color: #1D9E75;
+}
+
+/* ── Socials ── */
+.footer-social-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-social-btn {
+    background-color: #f7f7f7;
+    border: 0.5px solid #e0e0e0;
+    border-radius: 8px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.footer-social-btn:hover {
+    border-color: #1D9E75;
+    color: #1D9E75;
+}
+
+/* ── Bottom Bar ── */
+.footer-bottom {
+    border-top: 0.5px solid #e5e5e5;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #999;
+    font-size: 12px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}

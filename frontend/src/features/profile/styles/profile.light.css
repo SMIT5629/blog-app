@@ -6,21 +6,21 @@
 
 .profile-loading,
 .profile-no-posts {
-    color: #555;
+    color: #888;
     text-align: center;
     margin-top: 3rem;
     font-size: 14px;
 }
 
 .profile-error {
-    color: #f87171;
+    color: #dc2626;
     text-align: center;
     margin-top: 3rem;
 }
 
 .profile-header {
-    background-color: #1a1a1a;
-    border: 0.5px solid #2a2a2a;
+    background-color: #ffffff;
+    border: 0.5px solid #e5e5e5;
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 2rem;
@@ -65,7 +65,7 @@
 .profile-name {
     font-size: 20px;
     font-weight: 600;
-    color: #fff;
+    color: #1a1a1a;
     margin-bottom: 3px;
 }
 
@@ -76,7 +76,7 @@
 }
 
 .profile-bio {
-    color: #777;
+    color: #666;
     font-size: 13px;
     line-height: 1.6;
     max-width: 400px;
@@ -107,9 +107,9 @@
 
 .btn-unfollow {
     background: none;
-    border: 0.5px solid #555;
+    border: 0.5px solid #d0d0d0;
     border-radius: 8px;
-    color: #ccc;
+    color: #333;
     font-size: 13px;
     padding: 8px 22px;
     cursor: pointer;
@@ -118,15 +118,15 @@
 }
 
 .btn-unfollow:hover {
-    border-color: #f87171;
-    color: #f87171;
+    border-color: #dc2626;
+    color: #dc2626;
 }
 
 .btn-edit-profile {
     background: none;
-    border: 0.5px solid #333;
+    border: 0.5px solid #d0d0d0;
     border-radius: 8px;
-    color: #ccc;
+    color: #333;
     font-size: 13px;
     padding: 8px 22px;
     text-decoration: none;
@@ -136,15 +136,15 @@
 }
 
 .btn-edit-profile:hover {
-    border-color: #555;
-    color: #fff;
+    border-color: #1D9E75;
+    color: #1D9E75;
 }
 
 .profile-stats {
     display: flex;
     gap: 2rem;
     padding-top: 1.25rem;
-    border-top: 0.5px solid #2a2a2a;
+    border-top: 0.5px solid #e5e5e5;
 }
 
 .profile-stat {
@@ -158,12 +158,12 @@
 .profile-stat-num {
     font-size: 20px;
     font-weight: 600;
-    color: #fff;
+    color: #1a1a1a;
 }
 
 .profile-stat-label {
     font-size: 12px;
-    color: #555;
+    color: #888;
 }
 
 a.profile-stat:hover .profile-stat-num {
@@ -172,7 +172,7 @@ a.profile-stat:hover .profile-stat-num {
 
 .profile-posts-label {
     font-size: 13px;
-    color: #555;
+    color: #888;
     margin-bottom: 1rem;
 }
 
@@ -196,24 +196,24 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .follow-list-back {
-    color: #555;
+    color: #666;
     font-size: 14px;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .follow-list-back:hover {
-    color: #fff;
+    color: #1a1a1a;
 }
 
 .follow-list-title {
     font-size: 18px;
     font-weight: 600;
-    color: #fff;
+    color: #1a1a1a;
 }
 
 .follow-list-empty {
-    color: #555;
+    color: #888;
     text-align: center;
     margin-top: 3rem;
     font-size: 14px;
@@ -230,15 +230,15 @@ a.profile-stat:hover .profile-stat-num {
     align-items: center;
     gap: 1rem;
     padding: 12px 16px;
-    background-color: #1a1a1a;
-    border: 0.5px solid #2a2a2a;
+    background-color: #ffffff;
+    border: 0.5px solid #e5e5e5;
     border-radius: 10px;
     text-decoration: none;
     transition: border-color 0.2s;
 }
 
 .follow-list-item:hover {
-    border-color: #3a3a3a;
+    border-color: #d0d0d0;
 }
 
 .follow-avatar {
@@ -263,14 +263,14 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .follow-username {
-    color: #fff;
+    color: #1a1a1a;
     font-size: 14px;
     font-weight: 500;
 }
 
 /* ── Edit Profile Page & Layout ── */
 .edit-profile-page {
-    background: #111;
+    background: #f7f7f7;
     min-height: 100vh;
     padding: 2rem 1.5rem;
 }
@@ -290,8 +290,8 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .edit-sidebar-card {
-    background: #1a1a1a;
-    border: 0.5px solid #2e2e2e;
+    background: #ffffff;
+    border: 0.5px solid #e5e5e5;
     border-radius: 12px;
     margin-top: 10px;
     padding: 1.25rem;
@@ -315,15 +315,15 @@ a.profile-stat:hover .profile-stat-num {
     height: 72px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #2e2e2e;
+    border: 2px solid #e5e5e5;
 }
 
 .edit-avatar-placeholder {
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    background: #0a2a1e;
-    border: 2px solid #0f6e56;
+    background: #f0faf6;
+    border: 2px solid #1D9E75;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -340,7 +340,7 @@ a.profile-stat:hover .profile-stat-num {
     height: 22px;
     border-radius: 50%;
     background: #1D9E75;
-    border: 2px solid #1a1a1a;
+    border: 2px solid #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -356,7 +356,7 @@ a.profile-stat:hover .profile-stat-num {
 .edit-sidebar-name {
     font-size: 14px;
     font-weight: 500;
-    color: #fff;
+    color: #1a1a1a;
     text-align: center;
 }
 
@@ -370,8 +370,8 @@ a.profile-stat:hover .profile-stat-num {
     font-size: 12px;
     font-weight: 500;
     color: #1D9E75;
-    background: #0a2a1e;
-    border: 0.5px solid #0f6e56;
+    background: #f0faf6;
+    border: 0.5px solid #1D9E75;
     border-radius: 8px;
     padding: 5px 12px;
     cursor: pointer;
@@ -379,12 +379,12 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .edit-photo-btn:hover {
-    background: #0d3324;
+    background: #e6f5ef;
 }
 
 .edit-sidebar-nav {
-    background: #1a1a1a;
-    border: 0.5px solid #2e2e2e;
+    background: #ffffff;
+    border: 0.5px solid #e5e5e5;
     border-radius: 5px;
     overflow: hidden;
     display: flex;
@@ -398,11 +398,11 @@ a.profile-stat:hover .profile-stat-num {
     padding: 10px 14px;
     font-size: 13px;
     font-family: inherit;
-    color: #888;
+    color: #666;
     background: transparent;
     border: none;
     border-left: 2px solid transparent;
-    border-bottom: 0.5px solid #2e2e2e;
+    border-bottom: 0.5px solid #e5e5e5;
     cursor: pointer;
     text-align: left;
     transition: background 0.15s, color 0.15s;
@@ -413,14 +413,14 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .edit-nav-item:not(.active):hover {
-    background: #222;
-    color: #ccc;
+    background: #f5f5f5;
+    color: #333;
 }
 
 .edit-nav-item.active {
     color: #1D9E75;
     border-left-color: #1D9E75;
-    background: #0a2a1e;
+    background: #f0faf6;
     font-weight: 500;
 }
 
@@ -431,8 +431,8 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .edit-section-card {
-    background: #1a1a1a;
-    border: 0.5px solid #2e2e2e;
+    background: #ffffff;
+    border: 0.5px solid #e5e5e5;
     border-radius: 12px;
     margin-top: 12px;
     padding: 1.25rem;
@@ -443,7 +443,7 @@ a.profile-stat:hover .profile-stat-num {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #555;
+    color: #888;
     margin-bottom: 1rem;
 }
 
@@ -465,17 +465,17 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .edit-form-group label {
-    color: #aaa;
+    color: #555;
     font-size: 13px;
     font-weight: 500;
 }
 
 .edit-form-group input,
 .edit-form-group textarea {
-    background-color: #242424;
-    border: 0.5px solid #333;
+    background-color: #ffffff;
+    border: 0.5px solid #e0e0e0;
     border-radius: 8px;
-    color: #ffffff;
+    color: #1a1a1a;
     font-size: 14px;
     font-family: inherit;
     outline: none;
@@ -486,7 +486,7 @@ a.profile-stat:hover .profile-stat-num {
 
 .edit-form-group input::placeholder,
 .edit-form-group textarea::placeholder {
-    color: #444;
+    color: #999;
 }
 
 .edit-form-group input:focus,
@@ -500,13 +500,13 @@ a.profile-stat:hover .profile-stat-num {
 
 .edit-field-hint {
     font-size: 11px;
-    color: #555;
+    color: #888;
     display: block;
 }
 
 .edit-char-count {
     font-size: 11px;
-    color: #555;
+    color: #888;
     text-align: right;
     display: block;
 }
@@ -515,21 +515,21 @@ a.profile-stat:hover .profile-stat-num {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #1e1e1e;
-    border: 0.5px solid #2e2e2e;
+    background: #f7f7f7;
+    border: 0.5px solid #e5e5e5;
     border-radius: 8px;
     padding: 10px 14px;
     font-size: 14px;
-    color: #555;
+    color: #888;
 }
 
 .edit-readonly-badge {
     margin-left: auto;
     font-size: 10px;
     font-weight: 500;
-    background: #222;
-    color: #555;
-    border: 0.5px solid #333;
+    background: #f5f5f5;
+    color: #888;
+    border: 0.5px solid #e0e0e0;
     border-radius: 999px;
     padding: 2px 8px;
 }
@@ -543,14 +543,14 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .edit-msg-error {
-    background-color: #2a1515;
-    border: 0.5px solid #5a2020;
-    color: #f87171;
+    background-color: #fef2f2;
+    border: 0.5px solid #fecaca;
+    color: #dc2626;
 }
 
 .edit-msg-success {
-    background-color: #0a2a1e;
-    border: 0.5px solid #0f6e56;
+    background-color: #f0faf6;
+    border: 0.5px solid #1D9E75;
     color: #1D9E75;
 }
 
@@ -569,7 +569,7 @@ a.profile-stat:hover .profile-stat-num {
 .edit-btn-danger {
     font-size: 13px;
     font-family: inherit;
-    color: #f87171;
+    color: #dc2626;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -581,14 +581,14 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .edit-btn-danger:hover {
-    color: #ef4444;
+    color: #b91c1c;
 }
 
 .edit-btn-cancel {
     background: none;
-    border: 0.5px solid #333;
+    border: 0.5px solid #d0d0d0;
     border-radius: 8px;
-    color: #aaa;
+    color: #555;
     cursor: pointer;
     font-size: 14px;
     font-family: inherit;
@@ -597,8 +597,8 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .edit-btn-cancel:hover {
-    border-color: #555;
-    color: #fff;
+    border-color: #999;
+    color: #1a1a1a;
 }
 
 .edit-btn-save {
@@ -631,7 +631,7 @@ a.profile-stat:hover .profile-stat-num {
 .who-to-follow-title {
     font-size: 15px;
     font-weight: 600;
-    color: #fff;
+    color: #1a1a1a;
     margin-bottom: 1rem;
 }
 
@@ -654,7 +654,7 @@ a.profile-stat:hover .profile-stat-num {
 }
 
 .who-to-follow-item:hover {
-    background-color: rgba(255, 255, 255, 0.04);
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
 .who-to-follow-profile {
@@ -697,7 +697,7 @@ a.profile-stat:hover .profile-stat-num {
 .who-to-follow-name {
     font-size: 13px;
     font-weight: 500;
-    color: #fff;
+    color: #1a1a1a;
 }
 
 .who-to-follow-username {
@@ -707,7 +707,7 @@ a.profile-stat:hover .profile-stat-num {
 
 .who-to-follow-stats {
     font-size: 11px;
-    color: #4b5563;
+    color: #888;
 }
 
 .who-to-follow-see-all {
@@ -737,14 +737,14 @@ a.profile-stat:hover .profile-stat-num {
 .follow-feed-header h1 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #1a1a1a;
     letter-spacing: -0.4px;
     margin-bottom: 4px;
 }
 
 .follow-feed-header p {
     font-size: 13px;
-    color: #4b5563;
+    color: #888;
 }
 
 /* single definition — was duplicated with an earlier, plainer version */
@@ -759,16 +759,16 @@ a.profile-stat:hover .profile-stat-num {
     align-items: center;
     gap: 14px;
     padding: 14px 16px;
-    background-color: #111111;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
     border-radius: 12px;
     text-decoration: none;
     transition: border-color 0.15s, background-color 0.15s;
 }
 
 .follow-feed-item:hover {
-    border-color: rgba(255, 255, 255, 0.12);
-    background-color: #161616;
+    border-color: #d0d0d0;
+    background-color: #f7f7f7;
 }
 
 .follow-feed-avatar {
@@ -791,7 +791,7 @@ a.profile-stat:hover .profile-stat-num {
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid #e5e5e5;
 }
 
 .follow-feed-info {
@@ -805,7 +805,7 @@ a.profile-stat:hover .profile-stat-num {
 .follow-feed-name {
     font-size: 15px;
     font-weight: 600;
-    color: #f3f4f6;
+    color: #1a1a1a;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -819,7 +819,7 @@ a.profile-stat:hover .profile-stat-num {
 
 .follow-feed-stats {
     font-size: 12px;
-    color: #4b5563;
+    color: #888;
     margin-top: 2px;
 }
 

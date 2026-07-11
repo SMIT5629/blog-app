@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { useGetFollowers } from "../hooks/useFollow";
-import "../styles/profile.css";
 
 const Followers = () => {
     const { id } = useParams();

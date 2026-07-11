@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../auth/auth.context.jsx";
 import { useUpdateProfile } from "../hooks/useProfile.js";
 import { FiCamera } from "react-icons/fi";
-import "../styles/profile.css";
 
 const EditProfile = () => {
     const { user, login } = useAuthContext();
