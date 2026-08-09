@@ -21,7 +21,7 @@ import Layout from "./shared/components/Layout.jsx";
 
 export const router = createBrowserRouter([
     {
-        element: <Layout />,  // navbar renders here
+        element: <Layout />, 
         children: [
             { path: "/", element: <Home /> },
             { path: "/posts/:id", element: <PostDetail /> },
