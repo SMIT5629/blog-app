@@ -4,6 +4,7 @@ const connectDB = require("./config/connectDB")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
+const helmet = require("helmet")
 
 const authRoutes = require("./routes/auth.route")
 const postRoutes = require("./routes/post.route")
@@ -15,6 +16,7 @@ const  app = express();
 
 app.set("trust proxy", 1);
 connectDB();
+app.use(helmet())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
