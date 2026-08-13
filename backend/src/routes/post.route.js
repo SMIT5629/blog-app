@@ -3,18 +3,20 @@ const router = express.Router();
 const PostController = require("../controllers/post.controller");
 const AuthMiddleware = require("../middlewares/auth.middleware")
 const { upload } = require("../middlewares/multer.middleware")
+const { readPostLimiter, createPostLimiter } = require("../middlewares/rateLimit.middleware");
 
-router.post("/create-post", AuthMiddleware.authUser, upload.single("cover_image"), PostController.createPost);
 
-router.get("/", PostController.getAllPosts);
+router.post("/create-post", createPostLimiter, AuthMiddleware.authUser, upload.single("cover_image"), PostController.createPost);
 
-router.get("/:id", PostController.getPostById);
+router.get("/", readPostLimiter, PostController.getAllPosts);
 
-router.patch("/:id", AuthMiddleware.authUser, upload.single("cover_image"), PostController.updatePost);
+router.get("/:id", readPostLimiter, PostController.getPostById);
 
-router.delete("/:id", AuthMiddleware.authUser, PostController.deletePost);
+router.patch("/:id", createPostLimiter, AuthMiddleware.authUser, upload.single("cover_image"), PostController.updatePost);
 
-router.patch("/:id/views", PostController.incrementViews);
+router.delete("/:id", createPostLimiter, AuthMiddleware.authUser, PostController.deletePost);
+
+router.patch("/:id/views", createPostLimiter, PostController.incrementViews);
 
 
 
