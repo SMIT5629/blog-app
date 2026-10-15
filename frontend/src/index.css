@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, Cambria, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-paper: #FBFBF9;
+  --color-ink: #18181B;
+  --color-ink-muted: #71717A;
+}
+
+:root {
+  --background: #FBFBF9;
+  --foreground: #18181B;
+  --card: #FFFFFF;
+  --card-foreground: #18181B;
+  --border: #E4E4E7;
+  --muted: #F4F4F5;
+  --muted-foreground: #71717A;
+  --primary: #0F172A;
+  --primary-foreground: #FFFFFF;
+  --accent: #2563EB;
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: #09090B;
+  --foreground: #FAFAFA;
+  --card: #141416;
+  --card-foreground: #FAFAFA;
+  --border: #27272A;
+  --muted: #1E1E22;
+  --muted-foreground: #A1A1AA;
+  --primary: #FAFAFA;
+  --primary-foreground: #09090B;
+  --accent: #3B82F6;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Custom editorial selection */
+::selection {
+  background-color: #0F172A;
+  color: #FFFFFF;
+}
+
+.dark ::selection {
+  background-color: #3B82F6;
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4D4D8;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #3F3F46;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A1A1AA;
+}
+
+/* Typography Helpers */
+.font-serif-editorial {
+  font-family: var(--font-serif);
+}
+
+.font-sans-editorial {
+  font-family: var(--font-sans);
+}
+
+.font-mono-editorial {
+  font-family: var(--font-mono);
+}
+
+/* Editorial Article prose styles */
+.article-prose {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  line-height: 1.85;
+  color: #27272A;
+}
+
+.dark .article-prose {
+  color: #E4E4E7;
+}
+
+.article-prose p {
+  margin-bottom: 1.6rem;
+}
+
+.article-prose h2 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.35;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #09090B;
+}
+
+.dark .article-prose h2 {
+  color: #FAFAFA;
+}
+
+.article-prose h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: #18181B;
+}
+
+.dark .article-prose h3 {
+  color: #F4F4F5;
+}
+
+.article-prose blockquote {
+  border-left: 3px solid #0F172A;
+  padding-left: 1.25rem;
+  font-style: italic;
+  font-size: 1.25rem;
+  margin: 2rem 0;
+  color: #3F3F46;
+}
+
+.dark .article-prose blockquote {
+  border-left-color: #3B82F6;
+  color: #D4D4D8;
+}
+
+.article-prose img {
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}
